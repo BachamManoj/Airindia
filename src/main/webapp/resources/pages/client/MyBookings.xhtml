@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    <title>My Bookings</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      .container {
+        margin: 20px auto;
+        width: 80%;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+      }
+      .btn:hover {background-color: #3e8e41}
+      .btn:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+      #canceledBookings {
+        display: none;
+      }
+    </style>
+    <script>
+      function toggleCanceledBookings() {
+        var x = document.getElementById("canceledBookings");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+    </script>
+  </h:head>
+  <h:body>
+    <ui:include src="/resources/pages/client/navbar.xhtml" />
+    <div class="container">
+      <h2>My Bookings</h2>
+      <h:form>
+        <h:dataTable value="#{mybookingsbean.bookings}" var="booking">
+          <h:column>
+            <f:facet name="header">Seatid</f:facet>
+            #{booking.seatid}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Flight Number</f:facet>
+            #{booking.flightNumber}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Seat Number</f:facet>
+            #{booking.seatnumber}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Payment Status</f:facet>
+            #{booking.paymentstatus}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Phone Number</f:facet>
+            #{booking.phoneNumber}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{booking.name}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Passport ID</f:facet>
+            #{booking.passportid}
+          </h:column>
+          <h:column>
+            <f:facet name="header">Seat Class</f:facet>
+            #{booking.seatClass}
+          </h:column>
+          <h:column>
+            <h:commandButton value="Cancel" action="#{mybookingsbean.cancelTicket}" styleClass="btn btn-danger">
+              <f:param name="seatid" value="#{booking.seatid}" />
+            </h:commandButton>
+          </h:column>
+        </h:dataTable>
+      </h:form>
+      <button class="btn" onclick="toggleCanceledBookings()">Show Canceled Flights</button>
+      <div id="canceledBookings">
+        <h2>Canceled Bookings</h2>
+        <h:form>
+          <h:dataTable value="#{mybookingsbean.canceledBookings}" var="booking">
+            <h:column>
+              <f:facet name="header">Seatid</f:facet>
+              #{booking.seatid}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Flight Number</f:facet>
+              #{booking.flightNumber}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Seat Number</f:facet>
+              #{booking.seatnumber}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Payment Status</f:facet>
+              #{booking.paymentstatus}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Phone Number</f:facet>
+              #{booking.phoneNumber}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Name</f:facet>
+              #{booking.name}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Passport ID</f:facet>
+              #{booking.passportid}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Seat Class</f:facet>
+              #{booking.seatClass}
+            </h:column>
+          </h:dataTable>
+        </h:form>
+      </div>
+    </div>
+  </h:body>
+</html>

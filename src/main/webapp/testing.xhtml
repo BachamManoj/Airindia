@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Flight Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .card form {
+            display: flex;
+            flex-direction: column;
+        }
+        .card label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .card input, .card button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .card button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #218838;
+        }
+        .card .cancel-button {
+            background-color: #dc3545;
+        }
+        .card .cancel-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Post Flight Data</h2>
+           
+           
+        </div>
+
+        <div class="card">
+            <h2>Cancel Flight</h2>
+            <form>
+                <label for="cancel-flight-number">Flight Number:</label>
+                <input type="text" id="cancel-flight-number" name="cancel-flight-number" required="required" />
+
+                <button type="submit" class="cancel-button">Cancel Flight</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

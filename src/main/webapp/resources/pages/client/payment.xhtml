@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Payment Page</title>
+    <STYLE type="text/css">
+    * {
+	  margin: 0;
+	  padding: 0;
+	  border: none;
+	}
+	@media screen and (min-width: 981px) {
+	  html {
+	    font-size: 10px;
+	  }
+	}
+	@media screen and (min-width: 641px) and (max-width: 980px) {
+	  html {
+	    font-size: 8px;
+	  }
+	}
+	@media screen and (max-width: 640px) {
+	  html {
+	    font-size: 7px;
+	  }
+	}
+	body {
+	  background: linear-gradient(to bottom, #ffffff, #dddddd);
+	  font-family: arial, sans-serif;
+	}
+	.demo {
+	  min-height: 100vh;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	.demo__button {
+	  width: 200px;
+	  display: block;
+	  margin: 20px auto 0;
+	  background-color: #0d57b8;
+	  transition: background-color 0.4s ease-out;
+	  border: 1px solid #a29e97;
+	  cursor: pointer;
+	  padding: 10px 0;
+	  text-transform: uppercase;
+	  font-size: 1.4rem;
+	  color: #f2f5f5;
+	}
+	.demo__button:hover,
+	.demo__button:focus {
+	  background-color: #a29e97;
+	  color: #0d57b8;
+	}
+	.melnik909 {
+	  position: fixed;
+	  bottom: 1rem;
+	  right: 1rem;
+	  font-size: 1.2rem;
+	  color: #000;
+	  text-decoration: none;
+	}
+	.melnik909:hover,
+	.melnik909:focus {
+	  text-decoration: underline;
+	}
+	/*
+	 * CSS Payment Card
+	 */
+	.payment-card {
+	  width: 60rem;
+	  box-sizing: border-box;
+	  padding: 2% 2% 4%;
+	}
+	.bank-card {
+	  position: relative;
+	  height: 30rem;
+	  font-family: arial, sans-serif;
+	}
+	.bank-card__side {
+	  width: 65%;
+	  position: absolute;
+	  border-radius: 10px;
+	  border-width: 0.16666667rem;
+	  border-style: solid;
+	}
+	.bank-card__side_front {
+	  background-color: #f0f0ee;
+	  padding: 5%;
+	  box-shadow: 0 0 10px #f4f4f2;
+	  border-color: #a29e97;
+	  top: 0;
+	  left: 0;
+	  z-index: 2;
+	}
+	.bank-card__side_back {
+	  background-color: #e0ddd7;
+	  padding: 24.5% 5% 11%;
+	  box-shadow: 0 0 2rem #f3f3f3;
+	  text-align: right;
+	  border-color: #dad9d6;
+	  top: 12%;
+	  right: 0;
+	}
+	.bank-card__side_back:before {
+	  content: "";
+	  width: 100%;
+	  height: 25%;
+	  background-color: #8e8b85;
+	  position: absolute;
+	  top: 14%;
+	  right: 0;
+	}
+	.bank-card__icon {
+	  display: block;
+	  width: 12%;
+	  height: 12%;
+	  background-size: contain;
+	  background-position: 50% 50%;
+	  background-repeat: no-repeat;
+	  position: absolute;
+	  bottom: 15%;
+	}
+	.bank-card__icon_mastercard {
+	  background-image: url("https://stas-melnikov.ru/paymentcard/mastercard.svg");
+	  right: 15%;
+	}
+	.bank-card__icon_visa {
+	  background-image: url("https://stas-melnikov.ru/paymentcard/visa.svg");
+	  right: 5%;
+	}
+	.bank-card__inner {
+	  margin-bottom: 4%;
+	}
+	.bank-card__inner:last-child {
+	  margin-bottom: 0;
+	}
+	.bank-card__label {
+	  display: inline-block;
+	  vertical-align: middle;
+	  width: 25%;
+	}
+	.bank-card__label_fullwidth {
+	  width: 100%;
+	}
+	.bank-card__hint {
+	  display: block;
+	  text-indent: -9999px;
+	  overflow: hidden;
+	  position: absolute;
+	}
+	.bank-card__caption {
+	  text-transform: uppercase;
+	  font-size: 1.09090909rem;
+	  margin-left: 1%;
+	}
+	.bank-card__field {
+	  box-sizing: border-box;
+	  border: 0.33333333rem solid #d0d0ce;
+	  outline: none;
+	  width: 100%;
+	  padding: .7em;
+	  font-size: 1.5rem;
+	  position: relative;
+	  z-index: 2;
+	}
+	.bank-card__field:focus {
+	  border-color: #fdde60;
+	}
+	@media screen and (max-width: 640px) {
+	  .bank-card__field {
+	    font-size: 1.2rem;
+	  }
+	}
+	.bank-card__separator {
+	  font-size: 3.33333333rem;
+	  color: #c4c4c3;
+	  padding-left: 4%;
+	  padding-right: 4%;
+	  display: inline-block;
+	  vertical-align: middle;
+	}
+    
+    
+    </STYLE>
+</head>
+<body>
+<ui:include src="/resources/pages/client/navbar.xhtml" />
+    <div class="demo">
+        <h:form class="payment-card">
+            <div class="bank-card">
+                <div class="bank-card__side bank-card__side_front">
+                    <i class="bank-card__icon bank-card__icon_mastercard"></i>
+                    <i class="bank-card__icon bank-card__icon_visa"></i>
+                    <h2>Holder of card</h2>
+                    <div class="bank-card__inner">
+                        <label class="bank-card__label bank-card__label_fullwidth">
+                            
+                            <h:inputText value="#{payment.cardHolder}" 
+                                         class="bank-card__field" 
+                                         placeholder="Holder of card" 
+                                         required="true" 
+                                         validatorMessage="Please enter a valid name" 
+                                         label="Holder of card">
+                                <f:validateRegex pattern="[A-Za-z, ]{2,}" />
+                            </h:inputText>
+                        </label>
+                    </div>
+                    <h2>Card Number</h2>
+                    <div class="bank-card__inner">
+                        <label class="bank-card__label bank-card__label_fullwidth">
+                            <span class="bank-card__hint">Number of card</span>
+                            <h:inputText value="#{payment.cardNumber}"
+                                         class="bank-card__field" 
+                                         placeholder="Number of card" 
+                                         required="true" 
+                                         validatorMessage="Please enter a valid card number" 
+                                         label="Number of card">
+                                <f:validateRegex pattern="[0-9]{16}" />
+                            </h:inputText>
+                        </label>
+                    </div>
+                    <div class="bank-card__inner">
+                        <span class="bank-card__caption">EXPIRY DATE</span>
+                    </div>
+                    <div class="bank-card__inner">
+                        <label class="bank-card__label">
+                            <span class="bank-card__hint">Month</span>
+                            <h:inputText value="#{payment.expiryDate}" 
+                                         class="bank-card__field" 
+                                         placeholder="MM/YY" 
+                                         maxlength="5" 
+                                         required="true" 
+                                         validatorMessage="Please enter a valid month" 
+                                         label="Month">
+                                <f:validateRegex pattern="(0[1-9]|1[0-2])\/([0-9]{2})" />
+                            </h:inputText>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="bank-card__side bank-card__side_back">
+                <h2>CARD  CVV</h2>
+                    <div class="bank-card__inner">
+                        <label class="bank-card__label">
+                            <span class="bank-card__hint">CVC</span>
+                            <h:inputSecret value="#{payment.cvv}" 
+                                           class="bank-card__field" 
+                                           placeholder="CVC" 
+                                           maxlength="3" 
+                                           required="true" 
+                                           validatorMessage="Please enter a valid CVC" 
+                                           label="CVC">
+                                <f:validateRegex pattern="[0-9]{3}" />
+                            </h:inputSecret>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <h:commandButton value="PAY NOW" action="#{payment.processPayment()}" styleClass="demo__button" />
+        </h:form>
+        <H1>#{payment.response}</H1>
+    </div>
+    <p>hello customer</p>
+</body>
+</html>

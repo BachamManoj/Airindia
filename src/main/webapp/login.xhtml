@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Varela Round', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f7f9fb;
+        }
+        .navbar {
+            background: #fff;
+            padding-left: 16px;
+            padding-right: 16px;
+            border-bottom: 1px solid #dfe3e8;
+            border-radius: 0;
+        }
+        .navbar .navbar-brand {
+            font-size: 20px;
+            padding-right: 50px;
+        }
+        .navbar .navbar-brand b {
+            color: #33cabb;
+        }
+        .form-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        .form-container .card {
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,.1);
+        }
+        .form-container .card-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container .card-header img.logo-img {
+            max-width: 150px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .form-container .form-group label {
+            font-size: 14px;
+            color: #333;
+        }
+        .form-container .form-control {
+            height: 45px;
+            border-radius: 5px;
+        }
+        .form-container .btn {
+            font-size: 16px;
+            height: 45px;
+            border-radius: 5px;
+            background-color: #33cabb;
+            border: none;
+        }
+        .form-container .btn:hover {
+            background-color: #31bfb1;
+        }
+        .form-container .text-center a {
+            color: #33cabb;
+            font-size: 14px;
+        }
+        .form-container .text-center a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <ui:include src="index.xhtml" />
+
+    <div class="form-container">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://www.goodreturns.in/img/2023/08/befunky-2023-7-4-21-20-51-1691682814.jpg" alt="Air India Logo" class="img-fluid logo-img" />
+            </div>
+            <div class="card-body">
+                <h:form>
+                    <div class="form-group">
+                        <label>USERNAME OR EMAIL</label>
+                        <h:inputText value="#{customer.email}" styleClass="form-control" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <label>PASSWORD</label>
+                        <h:inputSecret value="#{customer.password}" styleClass="form-control" required="true" />
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Login" action="#{customer.login}" styleClass="btn btn-primary btn-block" >
+                            <f:param name="email" value="#{customer.email}" />
+                        </h:commandButton>
+                    </div>
+                    
+                    <div class="text-center mt-2">
+                        <a href="#">Forgot Your password?</a>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

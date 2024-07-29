@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>About Us</title>
+    <style type="text/css">
+        /* styles.css */
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+        }
+
+        .header {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px #aaa;
+        }
+
+        .intro-text {
+            font-size: 1.3em;
+            text-align: center;
+            margin: 20px 0;
+            color: #34495e;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .sub-header {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #2980b9;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        h:outputText {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .panelGrid {
+            width: 90%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .panelGrid:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .panelGrid h2 {
+            margin-top: 0;
+        }
+
+        @media (min-width: 600px) {
+            .panelGrid {
+                width: 70%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .panelGrid {
+                width: 50%;
+            }
+        }
+
+        /* Add some animations */
+        .fade-in {
+            animation: fadeIn ease 2s;
+        }
+
+        @keyframes fadeIn {
+            0% {opacity:0;}
+            100% {opacity:1;}
+        }
+
+        /* Add some hover effects */
+        .intro-text:hover, .about-text:hover, .sub-header:hover {
+            color: #1abc9c;
+            transition: color 0.3s;
+        }
+
+        /* Button styles */
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-info h:outputText {
+            font-size: 1.1em;
+            color: #555;
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact-info h:outputText:hover {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+
+        /* Add a gradient background */
+        body {
+            background: linear-gradient(120deg, #f4f4f9, #dff9fb);
+        }
+
+        /* Footer style */
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #014A99;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</h:head>
+
+<h:body>
+<ui:include src="/index.xhtml" />
+    <h:form>
+        <h:panelGrid columns="1" cellpadding="10" styleClass="fade-in">
+            <h:outputText value="About Us" styleClass="header" />
+
+            <h:outputText value="Welcome to AirIndia Airlines!" styleClass="intro-text" />
+            
+            <h:outputText value="At AirIndia Airlines, we are committed to providing the highest quality service to our customers. Our mission is to connect people and places with a seamless and enjoyable travel experience. We pride ourselves on our dedication to safety, comfort, and customer satisfaction." styleClass="about-text" escape="false" />
+
+            <h:outputText value="Our History" styleClass="sub-header" />
+            <h:outputText value="Founded in 2000, AirIndia Airlines has grown to become one of the leading airlines in the industry. With a fleet of modern aircraft and a team of experienced professionals, we operate flights to destinations all over the world. Our dedication to innovation and excellence has earned us numerous awards and a loyal customer base." styleClass="about-text" escape="false" />
+
+            <h:outputText value="Our Values" styleClass="sub-header" />
+            <ul>
+                <li>
+                    <h:outputText value="Customer Focus: We prioritize our customers' needs and strive to exceed their expectations." />
+                </li>
+                <li>
+                    <h:outputText value="Safety: The safety of our passengers and crew is our top priority." />
+                </li>
+                <li>
+                    <h:outputText value="Integrity: We conduct our business with honesty and transparency." />
+                </li>
+                <li>
+                    <h:outputText value="Excellence: We are committed to continuous improvement and excellence in everything we do." />
+                </li>
+                <li>
+                    <h:outputText value="Innovation: We embrace new technologies and innovative solutions to enhance our services." />
+                </li>
+            </ul>
+
+            <h:outputText value="Contact Us" styleClass="sub-header" />
+            <h:outputText value="If you have any questions or need assistance, please don't hesitate to contact our customer service team. We are here to help you with all your travel needs." styleClass="about-text" escape="false" />
+
+            <div class="contact-info">
+                <h:outputText value="Email: support@airindia.com" />
+                <h:outputText value="Phone: 1-800-123-4567" />
+            </div>
+        </h:panelGrid>
+    </h:form>
+    <div class="footer">
+         2024 AirIndia Airlines. All rights reserved.
+    </div>
+</h:body>
+</html>

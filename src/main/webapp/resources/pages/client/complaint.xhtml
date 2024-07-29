@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Post Complaint</title>
+    <style>
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .form-container h\\:inputText, .form-container h\\:inputTextarea, .form-container h\\:commandButton {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .form-container h\\:commandButton {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container h\\:commandButton:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Post Complaint</h2>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" value="#{customerComplaintBean.email}" />
+                
+                <h:outputLabel for="complaint" value="Complaint:" />
+                <h:inputTextarea id="complaint" value="#{customerComplaintBean.complaint}" rows="6" />
+                
+                <h:commandButton value="Post Complaint" action="#{customerComplaintBean.postComplaint}" />
+            </h:panelGrid>
+        </h:form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+}
+
+.header {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: #2c3e50;
+}
+
+.intro-text {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 20px 0;
+    color: #34495e;
+}
+
+.about-text {
+    font-size: 1em;
+    line-height: 1.6em;
+    margin: 10px 0;
+    color: #555;
+}
+
+.sub-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #2980b9;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+}
+
+h:outputText {
+    display: block;
+    margin: 5px 0;
+}
+
+.panelGrid {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.panelGrid h2 {
+    margin-top: 0;
+}
+
+@media (min-width: 600px) {
+    .panelGrid {
+        width: 60%;
+    }
+}
+
+@media (min-width: 900px) {
+    .panelGrid {
+        width: 40%;
+    }
+}

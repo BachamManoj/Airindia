@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Verification Success</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("resources/image/loginbg.jpg"); /* Background image path */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 50%;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d2232a;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d2232a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #b01d26;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Password Reset Complete</h1>
+        <p>Your account password Reset is complete. You can now log in to your account.</p>
+        
+		<h:form><h:commandLink action="mainlogin.jsf" value="login" /></h:form>
+    </div>
+</body>
+</html>

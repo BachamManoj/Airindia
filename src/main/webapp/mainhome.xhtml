@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <title>Image Slider</title>
+    <style>
+         *, *:after, *:before {
+            box-sizing: border-box;
+        }
+        .slider-wrap {
+            position: relative;
+        }
+        .image-slider {
+            height: 75vh;
+            overflow: hidden;
+        }
+        .img-wrap {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-wrap:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        .img-wrap img {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            min-width: 100%;
+            max-width: none;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 50px;
+            line-height: 1.2;
+            display: block;
+            color: #fff;
+            font-weight: 400;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            padding: 75px 15px;
+            -webkit-transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+        h1.show {
+            letter-spacing: 0.15em;
+            opacity: 1;
+        }
+        .slick-arrow {
+            font-size: 0;
+            line-height: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            height: 60px;
+            margin: auto;
+            background-color: transparent;
+            border-radius: 60px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            outline: none;
+            z-index: 2;
+        }
+        .slick-arrow.slick-prev {
+            left: 20px;
+        }
+        .slick-arrow.slick-next {
+            right: 20px;
+        }
+        .slick-arrow:before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+        }
+        .slick-arrow.slick-prev:before {
+            transform: rotate(-45deg) translate(2px, 2px);
+        }
+        .slick-arrow.slick-next:before {
+            transform: rotate(135deg) translate(2px, 2px);
+        }
+        .slider-progress {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+        }
+        .slider-progress span {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            width: 0px;
+            height: 100%;
+            background-color: rgba(233, 233, 120, 0.7);
+            transition: all 0s linear;
+        }
+        .slider-progress span.active {
+            width: 100%;
+        }
+        .search-container {
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .search-box input, .search-box select, .search-box button {
+            margin: 5px;
+        }
+        .search-box input {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            flex: 1;
+        }
+        .search-box select {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            flex: 0.2;
+        }
+        .search-box button {
+            background: #004a99;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            transition: background 0.3s ease-in-out;
+        }
+        .search-box button:hover {
+            background: #033b73;
+        }
+        .form-inline {
+            display: flex;
+        }
+        .form-inline .input-group {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .search-box {
+                flex-direction: column;
+            }
+            .search-box input, .search-box select, .search-box button {
+                width: 100%;
+            }
+        }
+        .text-left {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            width: 300px;
+        }
+        .promo-section {
+            text-align: left;
+            padding: 20px 0;
+            font-weight: bold;
+            color: #fff;
+        }
+        .promo-section h2 {
+            font-size: 35px;
+            margin: 0;
+        }
+        .promo-section p {
+            font-size: 20px;
+            margin: 10px 0 0;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".datepicker").datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'HH:mm',
+                showSecond: false,
+                minDate: 0
+            });
+
+            var sliderTimer = 5000;
+            var beforeEnd = 500;
+            var $imageSlider = $('.image-slider');
+            $imageSlider.slick({
+                autoplay: true,
+                autoplaySpeed: sliderTimer,
+                speed: 1000,
+                arrows: true,
+                dots: false,
+                adaptiveHeight: true,
+                pauseOnFocus: false,
+                pauseOnHover: false,
+            });
+
+            function progressBar() {
+                $('.slider-progress').find('span').removeAttr('style');
+                $('.slider-progress').find('span').removeClass('active');
+                setTimeout(function() {
+                    $('.slider-progress').find('span').css('transition-duration', (sliderTimer / 1000) + 's').addClass('active');
+                }, 100);
+            }
+            progressBar();
+            $imageSlider.on('beforeChange', function(e, slick) {
+                progressBar();
+            });
+            $imageSlider.on('afterChange', function(e, slick, nextSlide) {
+                titleAnim(nextSlide);
+            });
+
+            function titleAnim(ele) {
+                $imageSlider.find('.slick-current').find('h1').addClass('show');
+                setTimeout(function() {
+                    $imageSlider.find('.slick-current').find('h1').removeClass('show');
+                }, sliderTimer - beforeEnd);
+            }
+            titleAnim();
+        });
+    </script>
+</head>
+<body>
+
+    <ui:include src="index.xhtml" />
+
+    
+    <ui:include src="/dasboard.xhtml" />
+
+    <div class="promo-section" style="background-color: #014A99">
+        <h2 style="color: #95A5A6">A CLASS APART. IT’S THE NEW STANDARD.</h2>
+        <p style="color: #95A5A6">Discover our world of exclusive offers and services that change the way you travel.</p>
+    </div>
+    
+    
+
+    <ui:include src="/home.xhtml" />
+    <ui:include src="/footer.xhtml" />
+</body>
+</html>

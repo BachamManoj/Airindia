@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#flightSearchResults.xhtml"
+  PATH="/flightSearchResults.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#flightSearchResults.xhtml:0" NAME="item"
+   PATH="/flightSearchResults.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="seatSelection::#seatSelection.xhtml"
+    NAME="output" PATH="/seatSelection.xhtml"
+    TARGET="rules:#seatSelection.xhtml" TITLE="seatSelection" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#seatSelection.xhtml"
+  PATH="/seatSelection.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

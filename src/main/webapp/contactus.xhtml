@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Contact Us - Airline Management System</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #333;
+        }
+        .faq-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .faq-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: calc(33% - 20px);
+            box-sizing: border-box;
+        }
+        .faq-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .faq-card p {
+            color: #666;
+        }
+        .contact-info {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .footer {
+            background-color: #014A99;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ui:include src="/index.xhtml" />
+    <div class="content">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-card">
+                <h3>How can I book a flight?</h3>
+                <p>You can book a flight through our online booking system or by calling our customer service hotline.</p>
+            </div>
+            <div class="faq-card">
+                <h3>What is the baggage allowance?</h3>
+                <p>The standard baggage allowance is 23kg for checked luggage and 7kg for carry-on luggage. Additional baggage can be purchased online.</p>
+            </div>
+            <div class="faq-card">
+                <h3>How can I change or cancel my booking?</h3>
+                <p>You can change or cancel your booking through our website under the 'Manage Booking' section or by contacting our customer service.</p>
+            </div>
+            <div class="faq-card">
+                <h3>What are the check-in options?</h3>
+                <p>You can check-in online, via our mobile app, or at the airport. Online and mobile check-in open 24 hours before departure.</p>
+            </div>
+            <div class="faq-card">
+                <h3>How can I earn frequent flyer miles?</h3>
+                <p>You can earn frequent flyer miles by booking flights with us and through our partner airlines. Visit our frequent flyer page for more details.</p>
+            </div>
+            <div class="faq-card">
+                <h3>What should I do if my flight is delayed or cancelled?</h3>
+                <p>If your flight is delayed or cancelled, you will be notified via email or SMS. You can also check the flight status on our website or app.</p>
+            </div>
+        </div>
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>If you have any questions or need further assistance, please contact us:</p>
+            <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+            <p><strong>Email:</strong> support@airline.com</p>
+            <p><strong>Address:</strong> 123 Airline St, Suite 100, City, Country</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Airline Management System. All rights reserved.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Flight Search Results</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
+    <style type="text/css">
+        body, input {
+            font-family: 'Lato';
+            
+            color: white;
+        }
+
+        .container {
+            margin: auto;
+            min-width: 960px;
+            padding: 20px;
+        }
+
+        .content-wrapper {
+            background: #eee;
+            border-radius: 5px;
+            padding: 40px;
+            color: black;
+        }
+
+        .table-wrapper {
+            background: #fff;
+            border-radius: 5px;
+            margin: 10px auto;
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            color: black;
+        }
+
+        .horizontal {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .col.header, .col.data {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .col.header {
+            color: #888;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .col.data {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .header-item, .data-item {
+            flex: 1;
+            text-align: center;
+            padding: 0 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .header-item:last-child, .data-item:last-child {
+            flex: 1;
+        }
+
+        .icon-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .icon {
+            cursor: pointer;
+            padding: 15px;
+            opacity: 0.5;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .icon:hover {
+            opacity: 1;
+        }
+
+        .icon:before {
+            color: #5092D5;
+            font-family: 'FontAwesome';
+            font-size: 20px;
+        }
+
+        .icon.edit:before {
+            content: "\f040";
+        }
+
+        .icon.delete:before {
+            content: "\f1f8";
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper" style="background-color: #014A99;">
+        <div class="table-wrapper">
+            <h:dataTable value="#{flights.searchResults}" var="flightdata" styleClass="table">
+                <h:column>
+                    <f:facet name="header">FLIGHT NUMBER</f:facet>
+                    #{flightdata.flightNumber}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">FROM</f:facet>
+                    #{flightdata.departureCity}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">TO</f:facet>
+                    #{flightdata.arrivalCity}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">DEPARTURE TIME</f:facet>
+                    #{flightdata.departureTime}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">AIRLINE</f:facet>
+                    #{flightdata.airline}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">PRICE</f:facet>
+                    #{flightdata.price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ECONOMY SEATS</f:facet>
+                    #{flightdata.economyseats}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">BUSINESS SEATS</f:facet>
+                    #{flightdata.businessseats}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">FIRST CLASS SEATS</f:facet>
+                    #{flightdata.firstclassseats}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ACTIONS</f:facet>
+                    <h:commandButton value="BOOK NOW" action="#{flights.seatSelection}" styleClass="btn btn-primary btn-block">
+                        <f:param name="flightNumber" value="#{flightdata.flightNumber}" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </div>
+</body>
+</html>

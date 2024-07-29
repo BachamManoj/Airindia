@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Customer Complaints</title>
+</head>
+<body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="email" value="Email:" />
+            <h:inputText id="email" value="#{customerComplaintBean.email}" />
+            
+            <h:outputLabel for="complaint" value="Complaint:" />
+            <h:inputTextarea id="complaint" value="#{customerComplaintBean.complaint}" />
+            
+            <h:commandButton value="Post Complaint" action="#{customerComplaintBean.postComplaint}" />
+        </h:panelGrid>
+    </h:form>
+    
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="emailReply" value="Email:" />
+            <h:inputText id="emailReply" value="#{customerComplaintBean.email}" />
+            
+            <h:outputLabel for="reply" value="Reply:" />
+            <h:inputTextarea id="reply" value="#{customerComplaintBean.reply}" />
+            
+            <h:commandButton value="Reply to Complaint" action="#{customerComplaintBean.replyComplaint}" />
+        </h:panelGrid>
+    </h:form>
+</body>
+</html>

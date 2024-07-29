@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Pricing and Discounts - Airline Management System</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #333;
+        }
+        .discount-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .discount-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: calc(45% - 20px);
+            box-sizing: border-box;
+        }
+        .discount-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .discount-card p {
+            color: #666;
+        }
+        .discount-card .promo-code {
+            color: #014A99;
+            font-weight: bold;
+        }
+        .footer {
+            background-color: #014A99;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ui:include src="/index.xhtml" />
+    <div class="content">
+        <h2>Our Discount Offers</h2>
+        <div class="discount-container">
+            <div class="discount-card">
+                <h3>First Flight Booking</h3>
+                <p>Get up to 10% off on your first flight booking.</p>
+                <p>Promo Code: <span class="promo-code">FIRSTFLIGHT10</span></p>
+            </div>
+            <div class="discount-card">
+                <h3>Frequent Traveler</h3>
+                <p>Get 50% off on your 100th trip with us.</p>
+                <p>Promo Code: <span class="promo-code">FREQTRAVEL50</span></p>
+            </div>
+            <div class="discount-card">
+                <h3>Business Travelers</h3>
+                <p>Business travelers get a 5% discount on all bookings.</p>
+                <p>Promo Code: <span class="promo-code">BIZTRAVEL5</span></p>
+            </div>
+            <div class="discount-card">
+                <h3>Family Trip</h3>
+                <p>Book a family trip and get 15% off.</p>
+                <p>Promo Code: <span class="promo-code">FAMILY15</span></p>
+            </div>
+            <div class="discount-card">
+                <h3>Weekend Getaway</h3>
+                <p>Plan a weekend getaway and enjoy a 20% discount.</p>
+                <p>Promo Code: <span class="promo-code">WEEKEND20</span></p>
+            </div>
+            <div class="discount-card">
+                <h3>Student Discount</h3>
+                <p>Students get a 10% discount on all flights.</p>
+                <p>Promo Code: <span class="promo-code">STUDENT10</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Airline Management System. All rights reserved.</p>
+    </div>
+</body>
+</html>

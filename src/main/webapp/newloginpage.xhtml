@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Login Page</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("resources/image/loginbg.jpg"); /* Background image path */
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            width: 70%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .left-section, .right-section {
+            width: 50%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .left-section {
+            background-color: #ffffff;
+        }
+
+        .right-section {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, h2 {
+            color: #d2232a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #d2232a;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #d2232a;
+            border: 1px solid #d2232a;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #d2232a;
+            text-decoration: none;
+        }
+
+        .info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .info li {
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            margin-top: 20px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: .25em;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: .25em;
+        }
+
+        .help-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>    
+    <div class="container">
+        <div class="left-section">
+            <h1>SIGN IN</h1>
+            <h:form>
+                <div class="form-group">
+                    <p>EMAIL</p>
+                    <h:inputText id="email" value="#{customer.email}" required="true" placeholder="Email Address" styleClass="input-field" validatorMessage="provide proper mail">
+                        <f:validateRegex pattern="^[A-Za-z0-9._%+-]+@gmail\.com$" />
+                    </h:inputText>
+                    <h:message for="email" styleClass="error-message"/>
+                </div>
+                <div class="form-group">
+                    <p>Password</p>
+                    <h:inputSecret value="#{customer.password}" required="true" placeholder="Password" styleClass="input-field"/>
+                    <h:message for="password" styleClass="error-message"/>
+                </div>
+                <div class="form-group">
+                    <h:commandButton value="Sign In" action="#{customer.login()}" styleClass="btn"/>
+                </div>
+                <h:outputText value="#{customer.validate}" styleClass="help-link" rendered="#{not empty customer.validate}" />
+                <div class="help-link">
+                    <a href="forgotpassword.jsf" class="forgot-password">Forgot Your Password?</a>
+                </div>
+                <div class="divider">OR</div>
+                <div class="help-link">
+                    <a href="otpvalidator.jsf">Account Activation</a>
+                </div>
+                <div class="help-link">
+                    <a href="#">Having trouble? Contact Us</a>
+                </div>
+            </h:form>
+        </div>
+        <div class="right-section">
+            <div class="info">
+                <h2>SIGN UP FOR YOUR FLYING RETURNS ACCOUNT</h2>
+                <ul>
+                    <li>Earn 1000 bonus reward points* on joining our Flying Returns programme</li>
+                    <li>Get Flying Returns points when you spend on Air India and Star Alliance Flights</li>
+                    <li>Earn points with our Flying Returns partners</li>
+                    <li>Spend reward points for flights and upgrades</li>
+                    <li>Get access to 1000+ lounges, extra baggage allowance and priority services</li>
+                </ul>
+                <p>*T C Apply</p>
+            </div>
+            <div class="form-group">
+                <h:form>
+                    <h:commandButton value="Sign Up" action="mainSignup" styleClass="btn"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

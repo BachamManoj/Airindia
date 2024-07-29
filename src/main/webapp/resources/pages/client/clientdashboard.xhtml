@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
+    <STYLE type="text/css">
+    
+    @charset "UTF-8";
+
+
+:root {
+  --primary-color: #3d5cb8;
+  --primary-color-dark: #334c99;
+  --text-dark: #0f172a;
+  --text-light: #64748b;
+  --extra-light: #f1f5f9;
+  --white: #ffffff;
+}
+
+
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 3rem;
+  color: var(--text-dark);
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: flex;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav__logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link a {
+  font-weight: 500;
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.link a:hover {
+  color: var(--text-dark);
+}
+
+.header__container .section__header {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.booking__container {
+  border-radius: 2rem;
+  border: 1px solid var(--extra-light);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking__nav {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  background-color: var(--extra-light);
+  border-radius: 5px;
+}
+
+.booking__nav span {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.booking__nav span:nth-child(2) {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.booking__container form {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 1rem;
+}
+
+.booking__container .input__content {
+  width: 100%;
+}
+
+.booking__container .form__group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.booking__container .form__group span {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  background-color: var(--extra-light);
+  border-radius: 1rem;
+}
+
+.booking__container .input__group {
+  width: 100%;
+  position: relative;
+}
+
+.booking__container label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.booking__container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-dark);
+}
+
+.booking__container input:focus ~ label {
+  font-size: 0.8rem;
+  top: 0;
+}
+
+.booking__container .form__group p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.booking__container .btn {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.plan__container .subheader {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 5px;
+}
+
+.plan__container .section__header {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.plan__container .description {
+  text-align: center;
+  color: var(--text-light);
+}
+
+.plan__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.plan__content .number {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+}
+
+.plan__content .number:nth-child(4) {
+  background-color: #e98b6d;
+}
+
+.plan__content .number:nth-child(7) {
+  background-color: #ffcca3;
+}
+
+.plan__content h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.plan__content p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.plan__image {
+  position: relative;
+}
+
+.plan__image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 10rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.plan__image img:nth-child(1) {
+  max-width: 250px;
+  transform: translate(calc(-50% - 9rem), calc(-50% + 5rem));
+  z-index: 3;
+}
+
+.plan__image img:nth-child(2) {
+  max-width: 260px;
+  transform: translate(-50%, calc(-50% - 5rem));
+  z-index: 2;
+}
+
+.plan__image img:nth-child(3) {
+  max-width: 230px;
+  transform: translate(calc(-50% + 9rem), calc(-50% + 5rem));
+}
+
+.memories {
+  background-color: var(--extra-light);
+}
+
+.memories__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.memories__header .section__header {
+  max-width: 600px;
+}
+
+.memories__header .view__all {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: transparent;
+  white-space: nowrap;
+  outline: none;
+  border: 1px solid var(--text-light);
+  border-radius: 2rem;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.memories__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+.memories__card {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 5rem;
+  background-color: var(--white);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.05);
+}
+
+.memories__card span {
+  display: inline-block;
+  padding: 20px 32px;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+
+.memories__card:nth-child(2) span {
+  background-color: #e98b6d;
+}
+
+.memories__card:nth-child(3) span {
+  background-color: #ffcca3;
+}
+
+.memories__card h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.memories__card p {
+  color: var(--text-light);
+  line-height: 1.75rem;
+}
+
+.lounge__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.lounge__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.lounge__image {
+  position: relative;
+}
+
+.lounge__image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 20rem;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lounge__image img:nth-child(1) {
+  max-width: 300px;
+  transform: translate(calc(-50% - 3rem), -50%);
+}
+
+.lounge__image img:nth-child(2) {
+  max-width: 200px;
+  transform: translate(calc(-50% + 6rem), calc(-50% + 7rem));
+}
+
+.lounge__details h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.lounge__details p {
+  color: var(--text-light);
+}
+
+.travellers__grid {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.travellers__card {
+  border-radius: 5rem;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.travellers__card__content {
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+}
+
+.travellers__card__content img {
+  position: absolute;
+  max-width: 70px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid var(--extra-light);
+  border-radius: 100%;
+}
+
+.travellers__card__content h4 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.travellers__card__content p {
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.subscribe {
+  background-color: var(--extra-light);
+}
+
+.subscribe__container {
+  max-width: 500px;
+  text-align: center;
+}
+
+.subscribe__form {
+  margin-top: 2rem;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--white);
+  border-radius: 2rem;
+}
+
+.subscribe__form input {
+  width: 100%;
+  padding: 0 1rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.footer {
+  background-color: var(--primary-color);
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 1fr);
+  gap: 5rem;
+}
+
+.footer__col h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer__col h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer__col p {
+  color: var(--extra-light);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer__col p:hover {
+  color: var(--white);
+}
+
+.footer__bar {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--extra-light);
+}
+
+.footer__bar p {
+  font-size: 0.9rem;
+  color: var(--extra-light);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials span {
+  font-size: 1.2rem;
+  color: var(--extra-light);
+}
+
+@import "Application.css";
+
+.bookingWindow,
+#confirmationWindow {
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+#confirmationWindow {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2.5, -7);
+}
+
+.bookingWindow > .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+.bookingWindow> .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: transparent;
+}
+#airPlane-head {
+    -fx-border-radius: 100% 100% 0 0;
+    -fx-background-radius: 100% 100% 0 0;
+    -fx-background-color: SecondaryColor;
+    -fx-border-color: darkgrey;
+    -fx-border-width: 0.5;
+    -fx-background-insets: 1;
+    -fx-padding: 300 30 30 30;
+}
+#airPlane-body {
+    -fx-background-radius: 500 500 0 0;
+    -fx-background-color: SecondaryColor;
+    -fx-background-insets: 1;
+    -fx-padding: 0 30 30 30;
+}
+
+
+#airPlane-body > * {
+    -fx-background-radius: 500 500 0 0;
+    -fx-background-color: DerivedColor;
+}
+
+#seatMap .seat {
+    -fx-background-radius: 30% 30% 0 0;
+    -fx-border-radius: 30% 30% 0 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 3;
+    -fx-effect: null;
+}
+
+#seatMap .seat:hover,
+#seatMap .seat:selected {
+    -fx-background-color: AccentColor;
+    -fx-border-color: AccentColor;
+}
+
+#seatMap .text {
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+#confirm,
+#confirm .text {
+    -fx-background-color: AccentColor;
+    -fx-background-radius: 5;
+    -fx-font-size: 15;
+}
+
+#cancel,
+#cancel .text {
+    -fx-background-color: #efefef;
+    -fx-background-radius: 5;
+    -fx-text-fill: gray;
+    -fx-font-size: 15;
+    -fx-effect: null;
+}
+
+.SeatIcon,
+#seatMap .SeatIcon {
+    -fx-background-radius: 30% 30% 0 0;
+    -fx-border-radius: 30% 30% 0 0;
+    -fx-border-width: 3;
+}
+
+.FirstSeatIcon,
+#seatMap .FirstSeatIcon  {
+    -fx-border-color: #ffb01e;
+}
+
+.BusinessSeatIcon,
+#seatMap .BusinessSeatIcon  {
+    -fx-border-color: #4fc10c;
+}
+
+.EconomySeatIcon,
+#seatMap .EconomySeatIcon  {
+    -fx-border-color: darkgray;
+}
+
+.SelectedSeatIcon,
+#seatMap .SelectedSeatIcon {
+    -fx-background-color: AccentColor;
+}
+
+.UnavailableSeatIcon,
+#seatMap .UnavailableSeatIcon,
+#seatMap .UnavailableSeatIcon:disabled {
+    -fx-background-color: #ff3434;
+    -fx-border-color: #ff3434;
+    -fx-opacity: 1.0;
+}
+
+.cancel,
+.favorite {
+    -fx-background-color: transparent;
+}
+.favorite .ikonli-font-icon {
+    -fx-icon-code: mdi-heart-outline;
+    -fx-icon-color: #ff3966;
+    -fx-icon-size: 40;
+}
+
+.favorite:selected .ikonli-font-icon {
+    -fx-icon-code: mdi-heart;
+}
+
+.cancel:hover {
+    -fx-effect: null;
+}
+.cancel .ikonli-font-icon {
+    -fx-icon-code: mdi-delete;
+    -fx-icon-color: #ff1f1f;
+    -fx-icon-size: 40;
+}
+
+    
+    
+    </STYLE>
+     
+     
+    <title>Web Design Mastery | Flivan</title>
+    <STYLE type="text/css">
+    	
+    </STYLE>
+    
+</head>
+<body>
+
+	
+	<ui:include src="/resources/pages/client/navbar.xhtml" />
+
+    <h:form>
+
+        <header class="section__container header__container">
+            <h1 class="section__header">Find And Book<br />A Great Experience</h1>
+            <img src="../../image/header.jpg" alt="header" />
+        </header>
+		
+       
+
+        <section class="section__container plan__container">
+            <p class="subheader">TRAVEL SUPPORT</p>
+            <h2 class="section__header">Plan your travel with confidence</h2>
+            <p class="description">
+                Find help with your bookings and travel plans, and see what to expect along your journey.
+            </p>
+            <div class="plan__grid">
+                <div class="plan__content">
+                    <span class="number">01</span>
+                    <h4>Travel Requirements for Dubai</h4>
+                    <p>
+                        Stay informed and prepared for your trip to Dubai with essential travel requirements, ensuring a smooth and hassle-free experience in this vibrant and captivating city.
+                    </p>
+                    <span class="number">02</span>
+                    <h4>Multi-risk travel insurance</h4>
+                    <p>
+                        Comprehensive protection for your peace of mind, covering a range of potential travel risks and unexpected situations.
+                    </p>
+                    <span class="number">03</span>
+                    <h4>Travel Requirements by destinations</h4>
+                    <p>
+                        Stay informed and plan your trip with ease, as we provide up-to-date information on travel requirements specific to your desired destinations.
+                    </p>
+                </div>
+                <div class="plan__image">
+                    <img src="../../image/plan-1.jpg" alt="plan" />
+                    <img src="../../image/plan-2.jpg" alt="plan" />
+                    <img src="../../image/plan-3.jpg" alt="plan" />
+                </div>
+            </div>
+        </section>
+
+        <section class="memories">
+            <div class="section__container memories__container">
+                <div class="memories__header">
+                    <h2 class="section__header">
+                        Travel to make memories all around the world
+                    </h2>
+                    <button class="view__all">View All</button>
+                </div>
+                <div class="memories__grid">
+                    <div class="memories__card">
+                        <span><i class="ri-calendar-2-line"></i></span>
+                        <h4>Book  relax</h4>
+                        <p>
+                            With "Book and Relax," you can sit back, unwind, and enjoy the journey while we take care of everything else.
+                        </p>
+                    </div>
+                    <div class="memories__card">
+                        <span><i class="ri-shield-check-line"></i></span>
+                        <h4>Smart Checklist</h4>
+                        <p>
+                            Introducing Smart Checklist with us, the innovative solution revolutionizing the way you travel with our airline.
+                        </p>
+                    </div>
+                    <div class="memories__card">
+                        <span><i class="ri-bookmark-2-line"></i></span>
+                        <h4>Save More</h4>
+                        <p>
+                            From discounted ticket prices to exclusive promotions and deals, we prioritize affordability without compromising on quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section__container lounge__container">
+            <div class="lounge__image">
+                <img src="../../image/lounge-1.jpg" alt="lounge" />
+                <img src="../../image/lounge-2.jpg" alt="lounge" />
+            </div>
+            <div class="lounge__content">
+                <h2 class="section__header">Unaccompanied Minor Lounge</h2>
+                <div class="lounge__grid">
+                    <div class="lounge__details">
+                        <h4>Experience Tranquility</h4>
+                        <p>
+                            Serenity Haven offers a tranquil escape, featuring comfortable seating, calming ambiance, and attentive service.
+                        </p>
+                    </div>
+                    <div class="lounge__details">
+                        <h4>Elevate Your Experience</h4>
+                        <p>
+                            Designed for discerning travelers, this exclusive lounge offers premium amenities, assistance, and private workspaces.
+                        </p>
+                    </div>
+                    <div class="lounge__details">
+                        <h4>A Welcoming Space</h4>
+                        <p>
+                            Creating a family-friendly atmosphere, The Family Zone is the perfect haven for parents and children.
+                        </p>
+                    </div>
+                    <div class="lounge__details">
+                        <h4>A Culinary Delight</h4>
+                        <p>
+                            Immerse yourself in a world of flavors, offering international cuisines, gourmet dishes, and carefully curated beverages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section__container travellers__container">
+            <h2 class="section__header">Best travellers of the month</h2>
+            <div class="travellers__grid">
+                <div class="travellers__card">
+                    <img src="../../image/traveller-1.jpg" alt="traveller" />
+                    <div class="travellers__card__content">
+                        <img src="../../image/client-1.jpg" alt="client" />
+                        <h4>Emily Johnson</h4>
+                        <p>Dubai</p>
+                    </div>
+                </div>
+                <div class="travellers__card">
+                    <img src="../../image/traveller-2.jpg" alt="traveller" />
+                    <div class="travellers__card__content">
+                        <img src="../../image/client-2.jpg" alt="client" />
+                        <h4>David Smith</h4>
+                        <p>Paris</p>
+                    </div>
+                </div>
+                <div class="travellers__card">
+                    <img src="../../image/traveller-3.jpg" alt="traveller" />
+                    <div class="travellers__card__content">
+                        <img src="../../image/client-3.jpg" alt="client" />
+                        <h4>Olivia Brown</h4>
+                        <p>Singapore</p>
+                    </div>
+                </div>
+                <div class="travellers__card">
+                    <img src="../../image/traveller-4.jpg" alt="traveller" />
+                    <div class="travellers__card__content">
+                        <img src="../../image/client-4.jpg" alt="client" />
+                        <h4>Daniel Taylor</h4>
+                        <p>Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="subscribe">
+            <div class="section__container subscribe__container">
+                <h2 class="section__header">Subscribe newsletter  get latest news</h2>
+                <form class="subscribe__form">
+                    <input type="text" placeholder="Enter your email here" />
+                    <button class="btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="section__container footer__container">
+                <div class="footer__col">
+                    <h3>AIRLINKS</h3>
+                    <p>
+                        Where Excellence Takes Flight. With a strong commitment to customer satisfaction and a passion for air travel, Flivan Airlines offers exceptional service and seamless journeys.
+                    </p>
+                    <p>
+                        From friendly smiles to state-of-the-art aircraft, we connect the world, ensuring safe, comfortable, and unforgettable experiences.
+                    </p>
+                </div>
+                <div class="footer__col">
+                    <h4>INFORMATION</h4>
+                    <p>Home</p>
+                    <p>About</p>
+                    <p>Offers</p>
+                    <p>Seats</p>
+                    <p>Destinations</p>
+                </div>
+                <div class="footer__col">
+                    <h4>CONTACT</h4>
+                    <p>Support</p>
+                    <p>Media</p>
+                    <p>Socials</p>
+                </div>
+            </div>
+            <div class="section__container footer__bar">
+                <p>Copyright © 2024 AIRLINES. All rights reserved.</p>
+                <div class="socials">
+                    <span><i class="ri-facebook-fill"></i></span>
+                    <span><i class="ri-twitter-fill"></i></span>
+                    <span><i class="ri-instagram-line"></i></span>
+                    <span><i class="ri-youtube-fill"></i></span>
+                </div>
+            </div>
+        </footer>
+    </h:form>
+    
+</body>
+</html>

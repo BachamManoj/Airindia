@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Data Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+ 			background-color: #014A99;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            padding: 10px 0;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            width: 48%;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .submit-btn {
+			color: #fff;
+			background-color: #4fa3e3;
+			font-weight: 400;
+			height: 65px;
+			font-size: 18px;
+			border: none;
+			width: 100%;
+			border-radius: 4px;
+			text-transform: uppercase
+		}
+    </style>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".datepicker").datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'HH:mm',
+                showSecond: false,
+                minDate: 0  // This sets the minimum date to the current date
+            });
+        });
+    </script>
+</head>
+<body>
+	
+    <h:form enctype="multipart/form-data">
+        <div class="container">
+            <div class="header">
+                <h1>Flight Data Entry</h1>
+            </div>
+            <h:messages globalOnly="true" layout="table" />
+            <div class="form-row">
+                <div class="form-group">
+                    <h:outputLabel for="flightNumber" value="Flight Number:" />
+                    <h:inputText value="#{flights.flightNumber}" id="flightNumber" required="true" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="departureCity" value="Departure City:" />
+                    <h:inputText value="#{flights.departureCity}" id="departureCity" required="true" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <h:outputLabel for="arrivalCity" value="Arrival City:" />
+                    <h:inputText value="#{flights.arrivalCity}" id="arrivalCity" required="true" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="departureTime" value="Departure Time:" />
+                    <h:inputText value="#{flights.departureTime}" id="departureTime" styleClass="datepicker" required="true" >
+                    	<f:converter converterId="localDateTimeConverter" />
+                    </h:inputText>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <h:outputLabel for="arrivalTime" value="Arrival Time:" />
+                    <h:inputText value="#{flights.arrivalTime}" id="arrivalTime" styleClass="datepicker" required="true" >
+                    	<f:converter converterId="localDateTimeConverter" />
+                    </h:inputText>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="airline" value="Airline:" />
+                    <h:inputText value="#{flights.airline}" id="airline" required="true" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <h:outputLabel for="price" value="Price:" />
+                    <h:inputText value="#{flights.price}" id="price" required="true" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="economyseats" value="Economy Seats:" />
+                    <h:inputText value="#{flights.economyseats}" id="economyseats" required="true" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <h:outputLabel for="businessseats" value="Business Seats:" />
+                    <h:inputText value="#{flights.businessseats}" id="businessseats" required="true" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="firstclassseats" value="First Class Seats:" />
+                    <h:inputText value="#{flights.firstclassseats}" id="firstclassseats" required="true" />
+                </div>
+            </div>
+            <h:commandButton value="Submit" action="#{flights.postflight}" styleClass="submit-btn" />
+           <h3>#{flights.response}</h3>
+        </div>
+    </h:form>
+</body>
+</html>

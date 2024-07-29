@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Date and Time Picker</title>
+   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $(".datepicker").datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'HH:mm',
+                showSecond: false,
+                minDate: 0  // This sets the minimum date to the current date
+            });
+        });
+    </script>
+</h:head>
+<body>
+    <p>HELLO MANOJ</p>
+    <h:inputText styleClass="datepicker" value="#{flights.departureTime}"></h:inputText>
+    <P>HELLO </P>
+</body>
+</html>

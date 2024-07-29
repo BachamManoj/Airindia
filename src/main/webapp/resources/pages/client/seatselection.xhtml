@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Seat Selection</title>
+    <style>
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .seat-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .seat {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .available {
+            background-color: #90caf9;
+        }
+        .selected {
+            background-color: #4caf50;
+        }
+        .occupied {
+            background-color: #f44336;
+            cursor: not-allowed;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .form-grid h:outputLabel {
+            text-align: right;
+            padding-right: 10px;
+        }
+        .form-grid h:inputText {
+            width: 100%;
+        }
+        .book-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .book-button:hover {
+            background-color: #45a049;
+        }
+        .response-text {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function selectSeat(seatNumber) {
+            let seatElement = document.getElementById('seat-' + seatNumber);
+            if (seatElement.classList.contains('occupied')) {
+                return; // Do nothing if the seat is occupied
+            }
+            document.getElementById('seatForm:seatNumber').value = seatNumber;
+            let seats = document.getElementsByClassName('seat');
+            for (let seat of seats) {
+                seat.classList.remove('selected');
+            }
+            seatElement.classList.add('selected');
+        }
+    </script>
+</h:head>
+<h:body>	
+	<ui:include src="/resources/pages/client/navbar.xhtml" />
+    <div class="container">
+        <h1>Seat Selection</h1>
+        <h:form id="seatForm">
+            <!-- Display received parameters -->
+            <div class="form-grid">
+                <h:outputLabel for="flightNumber" value="Flight Number: " />
+                <h:inputText id="flightNumber" value="#{seat.flightNumber}" readonly="true" />
+
+                <h:outputLabel for="email" value="Email: " />
+                <h:inputText id="email" value="#{seat.email}" readonly="true" />
+
+                <h:outputLabel for="phoneNumber" value="Phone Number: " />
+                <h:inputText id="phoneNumber" value="#{seat.phoneNumber}" />
+
+                <h:outputLabel for="firstName" value="Passenger Name: " />
+                <h:inputText id="firstName" value="#{seat.name}" />
+
+                <h:outputLabel for="lastName" value="Passport ID: " />
+                <h:inputText id="lastName" value="#{seat.passportId}" />
+
+                <h:outputLabel for="seatNumber" value="Seat Number: " />
+                <h:inputText id="seatNumber" value="#{seat.seatNumber}" />
+                
+                <h:outputLabel for="seatClass" value="Seat class: " />
+                <h:inputText id="seatClass" value="#{seat.seatClass}" />
+            </div>
+
+            <!-- Display seat grid -->
+            <div class="seat-grid">
+                <ui:repeat value="#{seat.seatNumbers}" var="seatNumber">
+                    <div id="seat-#{seatNumber}" 
+                         class="seat #{seat.isSeatOccupied(seatNumber) ? 'occupied' : 'available'}" 
+                         style="grid-column: #{seat.getSeatPosition(seatNumber)};" 
+                         onclick="selectSeat(#{seatNumber})">
+                        #{seatNumber}
+                    </div>
+                </ui:repeat>
+            </div>
+
+            <!-- Command button to book seat -->
+            <h:commandButton value="Book Seat" action="#{seat.bookSeat}" styleClass="book-button" />
+            <h:outputText value="#{seat.response}" styleClass="response-text" />
+        </h:form>
+    </div>
+</h:body>
+</html>

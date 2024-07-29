@@ -30,7 +30,7 @@ The AirIndia Airline Management System is a Java EE-based web application design
 ## Setup and Installation
 1. **Clone the repository**:
     ```sh
-    git clone <repository-url>
+    clone the project from git
     cd Airindia
     ```
 
